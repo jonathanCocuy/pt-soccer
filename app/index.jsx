@@ -1,31 +1,88 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View , Button, Image } from 'react-native';
+import { useState } from 'react';
+import Logo from '../assets/icon-image.png'
+import TranslationES from './translation.es.json'
+import { Link } from 'expo-router';
 
 /* 
-  SyleSheet: This is for the styles
-  Text: In react native we use text is like <p></p>
-  View: This is like a div in react 
+    StyleSheet: This is for the styles
+    Text: In react native we use text is like <p></p>
+    View: This is like a div in react 
 */
 
+const textMap = TranslationES.title
+
 const Home = () => {
-  return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Bienvenido a ProTraining Soccer</Text>
-    </View>
-  )
+    const [ isChange, setIsChange ] = useState(true);
+    return (
+        <View style={styles.mainContainer}>
+            <View style={styles.textContent}>
+                <Text style={styles.text}>{textMap} {isChange ? "Football" : "Soccer"}</Text>
+                <Button
+                    onPress={() => setIsChange(!isChange)}
+                    style={styles.btn}
+                    title='Change'
+                />
+                <Link href="/about">About page</Link>
+            </View>
+                <Image source={Logo} style={styles.image} />
+            <View style={styles.barContent}>
+                <Text style={styles.paragraph}>Aquí puedes preparar todo tu entrenamiento para diferentes categorias</Text>
+            </View>
+        </View>
+    )
 }
 
 export default Home;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#202020'
-  },
+    mainContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#202020',
+        gap: 12
+    },
 
-  text: {
-    color: '#fff',
-    fontSize: 24
-  }
+    textContent: {
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#FFF',
+        gap: 12,
+        padding: 8,
+        borderRadius: 8,
+    },
+
+    barContent: {
+        width: 250,
+        justifyContent: 'left',
+        backgroundColor: 'gray',
+        padding: 16,
+        borderRadius: 8,
+    },
+
+    text: {
+        color: '#000',
+        fontSize: 22,
+        borderColor: '#fff',
+        borderWidth: 2,    
+        borderStyle: 'solid',
+        padding: 12,
+        borderRadius: 23,
+        fontFamily: 'Inter-Bold',
+    },
+
+    paragraph: {
+        fontSize: 18
+    },
+
+    image: {
+        width: 200,
+        height: 200
+    },
+
+    btn: {
+        borderRadius: 10,
+        backgroundColor: '#fff'
+    }
 })
