@@ -26,8 +26,8 @@ const Home = () => {
                 <Link href="/about">About page</Link>
             </View>
                 <Image source={Logo} style={styles.image} />
-            <View style={styles.barContent}>
-                <Text style={styles.paragraph}>Aquí puedes preparar todo tu entrenamiento para diferentes categorias</Text>
+            <View style={styles.containerText}>
+                <Text style={styles.paragraph}>Software engineer in NYC (UTC-4) crafting delightful user experiences. On YouTube I document my creative and tech journey with a community of 90K+ subscribers.</Text>
             </View>
         </View>
     )
@@ -53,10 +53,10 @@ const styles = StyleSheet.create({
         borderRadius: 8,
     },
 
-    barContent: {
-        width: 250,
+    containerText: {
+        width: 350,
         justifyContent: 'left',
-        backgroundColor: 'gray',
+        backgroundColor: 'lightgray',
         padding: 16,
         borderRadius: 8,
     },
@@ -70,10 +70,14 @@ const styles = StyleSheet.create({
         padding: 12,
         borderRadius: 23,
         fontFamily: 'Inter-Bold',
+        letterSpacing: -0.5, 
     },
 
     paragraph: {
-        fontSize: 18
+        fontFamily: 'Inter-Regular',
+        fontSize: 16,
+        color: '#000',
+        letterSpacing: -0.3,  // Similar to SF Pro
     },
 
     image: {

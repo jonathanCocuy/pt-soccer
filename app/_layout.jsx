@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useFonts, Inter_400Regular, Inter_700Bold } from '@expo-google-fonts/inter';
 import * as SplashScreen from 'expo-splash-screen';
 import { Stack } from 'expo-router';
-import { View, StyleSheet, Text } from 'react-native'
+import { View, StyleSheet, Text, Alert } from 'react-native'
 
 // Mantiene la pantalla de carga (Splash Screen) visible mientras cargan los assets
 SplashScreen.preventAutoHideAsync();
@@ -10,7 +10,7 @@ SplashScreen.preventAutoHideAsync();
 export default function RootLayout() {
     const [loaded, error] = useFonts({
         'Inter-Regular': Inter_400Regular,
-        'Inter-Bold': Inter_700Bold,
+        'Inter-Bold': Inter_700Bold
     });
 
     useEffect(() => {
@@ -21,10 +21,10 @@ export default function RootLayout() {
 
     if (!loaded && !error) {
         return null;
-    }
+    } 
 
     return (
-        // Stack just should be use in the layout component.
+        // Stack just should be use in the main layout component.
         <View style={styles.container}>
             <Stack
                 screenOptions={{
@@ -33,6 +33,8 @@ export default function RootLayout() {
                     },
                     headerTitleStyle: {
                         fontFamily: 'Inter-Bold',
+                        letterSpacing: -0.3,
+                        fontSize: 14
                     },
                     headerTintColor: '#000',
                 }}
@@ -47,7 +49,7 @@ export default function RootLayout() {
                 />
             </Stack>
             <View style={styles.content}>
-                <Text style={styles.text}>This text will always appear.</Text>
+                <Text style={styles.text2}>This text will always appear.</Text>
             </View>
         </View>
     );
@@ -55,7 +57,8 @@ export default function RootLayout() {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1
+        flex: 1,
+        marginBottom: 20
     },
 
     content: {
@@ -64,6 +67,9 @@ const styles = StyleSheet.create({
     },
 
     text: {
-        color: '#000'
+        color: '#000',
+        fontSize: 16,
+        fontFamily: 'Inter-Regular',
+        letterSpacing: -0.5
     }
 })
